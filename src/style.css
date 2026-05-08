@@ -1,0 +1,92 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  height: 100vh;
+  width:100vw;
+  background-color: rgb(36, 36, 49);
+}
+
+main{
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  padding: 30px;
+  margin:auto;
+  height: 70%;
+  width: 50%;
+  border-radius: 5px;
+}
+
+h1{
+  color: white;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 30px;
+}
+
+.game-board{
+  display: flex;
+  flex-direction: column;
+  /* gap: 200px; */
+}
+
+.score-div{
+  margin-top: 50px;
+  width: 200px;
+  padding: 10px;
+  margin-bottom: 100px;
+    border: 1px solid gray;
+  border-radius: 5px;
+
+}
+
+.game-constraint{
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+.timer,.life,.difficulty-level{
+  width: 200px;
+  padding: 10px;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+.scrumble{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.guess-word,.word-appear{
+  width: 630px;
+  padding: 10px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  font-size: 20px;
+  
+}
+.guess-word{
+  border: none;
+  padding:0;
+
+}
+
+.fill-word{
+  width: 630px;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 20px;
+}
+
+.getWord{
+  padding: 5px 30px;
+}
+
+.next-word{
+  width: 90px;
+  padding: 5px 30px;
+}
