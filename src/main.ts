@@ -116,6 +116,7 @@ function randomSrumbleWord(){
 
   hint?.addEventListener('click',()=>{
     console.log(categoryOption[index]);
+    hint.textContent=categoryOption[index]['hint']!
   })
 
   return correctWord;
