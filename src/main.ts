@@ -9,17 +9,20 @@ const gameData: User[] = [
   { id: 1, scrumbleWord: "alepp", correctWord: "apple", difficulty: "easy" },
   { id: 2, scrumbleWord: "orgean", correctWord: "orange", difficulty: "easy" },
   { id: 3, scrumbleWord: "magon", correctWord: "mango", difficulty: "easy" },
+  { id: 11, scrumbleWord: "awtremelno", correctWord: "watermelon", difficulty: "medium" },
+  { id: 12, scrumbleWord: "bwerryrast", correctWord: "strawberry", difficulty: "medium" },
+  { id: 10, scrumbleWord: "nipoepal", correctWord: "pineapple", difficulty: "medium" },
+  { id: 13, scrumbleWord: "kiiw", correctWord: "kiwi", difficulty: "hard" },
+  { id: 4, scrumbleWord: "naanab", correctWord: "banana", difficulty: "hard" },
+  { id: 5, scrumbleWord: "agrpes", correctWord: "grapes", difficulty: "hard" },
+  { id: 6, scrumbleWord: "yrrebc", correctWord: "cherry", difficulty: "hard" },
 
-  // { id: 4, scrumbleWord: "naanab", correctWord: "banana", difficulty: "easy" },
-  // { id: 5, scrumbleWord: "agrpes", correctWord: "grapes", difficulty: "easy" },
-  // { id: 6, scrumbleWord: "yrrebc", correctWord: "cherry", difficulty: "easy" },
+
+
   // { id: 7, scrumbleWord: "paayap", correctWord: "papaya", difficulty: "easy" },
   // { id: 8, scrumbleWord: "nolem", correctWord: "melon", difficulty: "easy" },
   // { id: 9, scrumbleWord: "aechp", correctWord: "peach", difficulty: "easy" },
-  // { id: 10, scrumbleWord: "nipoepal", correctWord: "pineapple", difficulty: "medium" },
-  // { id: 11, scrumbleWord: "awtremelno", correctWord: "watermelon", difficulty: "medium" },
-  // { id: 12, scrumbleWord: "bwerryrast", correctWord: "strawberry", difficulty: "medium" },
-  // { id: 13, scrumbleWord: "kiiw", correctWord: "kiwi", difficulty: "easy" },
+ 
 ];
 
 const scrambleWordDiv=document.querySelector<HTMLDivElement>('.word-appear');
@@ -29,13 +32,29 @@ const score=document.querySelector<HTMLElement>('.score');
 const nextBtn=document.querySelector<HTMLElement>('.next-word');
 const timer=document.querySelector<HTMLElement>('.timer');
 const life=document.querySelector<HTMLElement>('.life');
+const level=document.querySelector<HTMLSelectElement>('.difficulty-level');
 
 
 let diffWordArr:number[]=[];
 console.log(diffWordArr);
 
+let diffcultLevel='easy';
+
+level.addEventListener('change',()=>{
+  diffcultLevel=level.value;
+  randomSrumbleWord();
+  console.log(diffcultLevel);
+})
+
+
 function randomSrumbleWord(){
   const index=Math.floor(Math.random()*gameData.length);
+
+  if(diffcultLevel!==gameData[index]['difficulty']){
+    randomSrumbleWord();
+    return;
+  }
+
   for(let ind of diffWordArr){
     if(index===ind){
       randomSrumbleWord();
@@ -52,6 +71,7 @@ function randomSrumbleWord(){
   
   return correctWord;
 }
+
 let scrumbleWord=randomSrumbleWord();
 let scoreTracker:number=0;
 
