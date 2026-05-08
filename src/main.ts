@@ -16,6 +16,8 @@ const correctWordDiv=document.querySelector<HTMLInputElement>('.fill-word');
 const submitBtn=document.querySelector<HTMLInputElement>('.getWord');
 const score=document.querySelector<HTMLElement>('.score');
 const nextBtn=document.querySelector<HTMLElement>('.next-word');
+const timer=document.querySelector<HTMLElement>('.timer');
+
 
 
 function randomSrumbleWord(){
@@ -39,11 +41,30 @@ submitBtn.addEventListener('click',()=>{
     scoreTracker++;
     console.log(scoreTracker);
     score.textContent=String(scoreTracker);
+    clearInterval(clear);
   }
   correctWordDiv.value=''
 })
 
 nextBtn.addEventListener('click',()=>{
   scrumbleWord=randomSrumbleWord();
-
+  clearInterval(clear);
+  checkTime();
 })
+
+let clear:number;
+function checkTime(){
+    let sec=0;
+    submitBtn.disabled=false;
+
+    clear=setInterval(()=>{
+      sec++;
+      timer.innerHTML=`<strong>Total time:${sec}</strong>`;
+
+      if(sec===10){
+        submitBtn.disabled=true;
+        clearInterval(clear);
+      }
+  },1000)
+}
+checkTime();
