@@ -5,7 +5,8 @@ interface User{
   difficulty:string,
 }
 
-const gameData: User[] = [
+//fruitCategory
+const fruitData:User[]=[
   { id: 1, scrumbleWord: "alepp", correctWord: "apple", difficulty: "easy" },
   { id: 2, scrumbleWord: "orgean", correctWord: "orange", difficulty: "easy" },
   { id: 3, scrumbleWord: "magon", correctWord: "mango", difficulty: "easy" },
@@ -16,13 +17,33 @@ const gameData: User[] = [
   { id: 4, scrumbleWord: "naanab", correctWord: "banana", difficulty: "hard" },
   { id: 5, scrumbleWord: "agrpes", correctWord: "grapes", difficulty: "hard" },
   { id: 6, scrumbleWord: "yrrebc", correctWord: "cherry", difficulty: "hard" },
+];
+//movieCategory
+const movieData:User[]=[
+  { id: 1, scrumbleWord: "galaan", correctWord: "lagaan", difficulty: "hard" },
+  { id: 2, scrumbleWord: "dagnal", correctWord: "dangal", difficulty: "easy" },
+  { id: 3, scrumbleWord: "asholy", correctWord: "sholay", difficulty: "easy" },
+  { id: 4, scrumbleWord: "abahubli", correctWord: "bahubali", difficulty: "medium" },
+  { id: 5, scrumbleWord: "kp", correctWord: "pk", difficulty: "easy" },
+  { id: 6, scrumbleWord: "raw", correctWord: "war", difficulty: "easy" },
+  { id: 7, scrumbleWord: "nzidgia", correctWord: "zindagi", difficulty: "medium" },
+  { id: 8, scrumbleWord: "nmkbai", correctWord: "kabmin", difficulty: "hard" },
+  { id: 9, scrumbleWord: "ultsan", correctWord: "sultan", difficulty: "medium" },
+  { id: 10, scrumbleWord: "eavrd", correctWord: "drave", difficulty: "hard" },
+];
 
-
-
-  // { id: 7, scrumbleWord: "paayap", correctWord: "papaya", difficulty: "easy" },
-  // { id: 8, scrumbleWord: "nolem", correctWord: "melon", difficulty: "easy" },
-  // { id: 9, scrumbleWord: "aechp", correctWord: "peach", difficulty: "easy" },
- 
+//cricketcategory
+const cricketerData:User[]=[
+  { id: 1, scrumbleWord: "lohki", correctWord: "kohli", difficulty: "easy" },
+  { id: 2, scrumbleWord: "inohd", correctWord: "dhoni", difficulty: "easy" },
+  { id: 3, scrumbleWord: "hitro", correctWord: "rohit", difficulty: "easy" },
+  { id: 4, scrumbleWord: "bubmrah", correctWord: "bumrah", difficulty: "medium" },
+  { id: 5, scrumbleWord: "nhipta", correctWord: "pathin", difficulty: "hard" },
+  { id: 6, scrumbleWord: "lrahku", correctWord: "rahul", difficulty: "easy" },
+  { id: 7, scrumbleWord: "anadph", correctWord: "pandha", difficulty: "medium" },
+  { id: 8, scrumbleWord: "rniaeg", correctWord: "raina", difficulty: "easy" },
+  { id: 9, scrumbleWord: "ceahsnit", correctWord: "sachin", difficulty: "medium" },
+  { id: 10, scrumbleWord: "vjaedja", correctWord: "jadeja", difficulty: "medium" },
 ];
 
 const scrambleWordDiv=document.querySelector<HTMLDivElement>('.word-appear');
@@ -33,53 +54,64 @@ const nextBtn=document.querySelector<HTMLElement>('.next-word');
 const timer=document.querySelector<HTMLElement>('.timer');
 const life=document.querySelector<HTMLElement>('.life');
 const level=document.querySelector<HTMLSelectElement>('.difficulty-level');
-
+const catogery=document.querySelector<HTMLSelectElement>('.catogery');
 
 let diffWordArr:number[]=[];
 console.log(diffWordArr);
 
 let diffcultLevel='easy';
+let categoryOption=fruitData;
 
 level.addEventListener('change',()=>{
   diffcultLevel=level.value;
-  randomSrumbleWord();
+  diffWordArr=[];
+  scrumbleWord=randomSrumbleWord();
   console.log(diffcultLevel);
 })
 
+catogery.addEventListener('change',()=>{
+  diffWordArr=[];
+  if(catogery.value==='fruitData'){
+    categoryOption=fruitData;
+    scrumbleWord=randomSrumbleWord();
+  }
+  else if(catogery.value==='movieData'){
+    categoryOption=movieData;
+    scrumbleWord=randomSrumbleWord();
+  }
+  else{
+    categoryOption=cricketerData;
+    scrumbleWord=randomSrumbleWord();
+  }
+})
 
 function randomSrumbleWord(){
-  const index=Math.floor(Math.random()*gameData.length);
+  const index=Math.floor(Math.random()*categoryOption.length);
 
-  if(diffcultLevel!==gameData[index]['difficulty']){
-    randomSrumbleWord();
-    return;
+  if(diffcultLevel!==categoryOption[index]['difficulty']){
+    return randomSrumbleWord();
   }
 
   for(let ind of diffWordArr){
     if(index===ind){
-      randomSrumbleWord();
-      return;
+      return randomSrumbleWord();
     }
   }
-  const scrumbleWord= gameData[index]["scrumbleWord"];
 
+  const scrumbleWord=categoryOption[index]["scrumbleWord"];
   scrambleWordDiv.textContent=scrumbleWord;
 
-  const correctWord= gameData[index]["correctWord"];
+  const correctWord=categoryOption[index]["correctWord"];
+  console.log('correctWord:',correctWord);
   diffWordArr.push(index);
-  console.log(diffWordArr);
-  
   return correctWord;
 }
 
 let scrumbleWord=randomSrumbleWord();
 let scoreTracker:number=0;
 
-
-
 submitBtn.addEventListener('click',()=>{
   const guess=correctWordDiv.value;
-  console.log(guess);
   if(guess===scrumbleWord){
     scoreTracker++;
     console.log(scoreTracker);
@@ -104,7 +136,6 @@ function checkTime(){
     clear=setInterval(()=>{
       sec--;
       timer.innerHTML=`<strong>Total time:${sec}</strong>`;
-
       if(sec===0){
         submitBtn.disabled=true;
         lifeTracker--;
@@ -118,7 +149,8 @@ checkTime();
 
 function gameOver(lifeTracker:number){
   if(lifeTracker===0){
-
+    alert('game over as our life is 0')
+    window.location.reload();
   }
   return;
 }
