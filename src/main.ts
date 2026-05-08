@@ -47,18 +47,17 @@ const cricketerData:User[]=[
   { id: 10, scrumbleWord: "vjaedja", correctWord: "jadeja", difficulty: "medium" },
 ];
 
-const scrambleWordDiv=document.querySelector<HTMLDivElement>('.word-appear');
-const correctWordDiv=document.querySelector<HTMLInputElement>('.fill-word');
-const submitBtn=document.querySelector<HTMLInputElement>('.getWord');
-const score=document.querySelector<HTMLElement>('.score');
-const nextBtn=document.querySelector<HTMLElement>('.next-word');
-const timer=document.querySelector<HTMLElement>('.timer');
-const life=document.querySelector<HTMLElement>('.life');
-const level=document.querySelector<HTMLSelectElement>('.difficulty-level');
-const catogery=document.querySelector<HTMLSelectElement>('.catogery');
-const hint=document.querySelector<HTMLElement>('.hint');
-const resetBtn=document.querySelector<HTMLElement>('.reset');
-const dataToView=document.querySelector<HTMLElement>('.user-game-data');
+const scrambleWordDiv = document.querySelector<HTMLDivElement>('.word-appear')!;
+const correctWordDiv = document.querySelector<HTMLInputElement>('.fill-word')!;
+const submitBtn = document.querySelector<HTMLInputElement>('.getWord')!;
+const score = document.querySelector<HTMLElement>('.score')!;
+const nextBtn = document.querySelector<HTMLElement>('.next-word');
+const timer = document.querySelector<HTMLElement>('.timer')!;
+const life = document.querySelector<HTMLElement>('.life')!;
+const level = document.querySelector<HTMLSelectElement>('.difficulty-level');
+const catogery = document.querySelector<HTMLSelectElement>('.catogery');
+const hint = document.querySelector<HTMLElement>('.hint')!;
+const resetBtn = document.querySelector<HTMLElement>('.reset');
 
 
 
@@ -68,7 +67,7 @@ console.log(diffWordArr);
 let diffcultLevel='easy';
 let categoryOption=fruitData;
 
-level.addEventListener('change',()=>{
+level?.addEventListener('change',()=>{
   diffcultLevel=level.value;
   diffWordArr=[];
   scrumbleWord=randomSrumbleWord();
@@ -76,9 +75,9 @@ level.addEventListener('change',()=>{
   checkTime();
 })
 
-catogery.addEventListener('change',()=>{
+catogery?.addEventListener('change',()=>{
   diffWordArr=[];
-  if(catogery.value==='fruitData'){
+  if(catogery?.value==='fruitData'){
     categoryOption=fruitData;
     scrumbleWord=randomSrumbleWord();
     checkTime()
@@ -115,9 +114,8 @@ function randomSrumbleWord(){
   console.log('correctWord:',correctWord);
   diffWordArr.push(index);
 
-  hint.addEventListener('click',()=>{
+  hint?.addEventListener('click',()=>{
     console.log(categoryOption[index]);
-    hint.textContent=categoryOption[index]['hint']
   })
 
   return correctWord;
@@ -126,14 +124,10 @@ function randomSrumbleWord(){
 let scrumbleWord=randomSrumbleWord();
 let scoreTracker:number=0;
 
-submitBtn.addEventListener('click',()=>{
+submitBtn?.addEventListener('click',()=>{
   const guess=correctWordDiv.value;
   if(guess===scrumbleWord){
     scoreTracker++;
-
-    localStorage.setItem('userData',JSON.stringify(scoreTracker));
-    let data=JSON.parse(localStorage.getItem('userData'));
-    dataToView.textContent=data;
     
     console.log(scoreTracker);
     score.textContent=String(scoreTracker);
@@ -142,7 +136,7 @@ submitBtn.addEventListener('click',()=>{
   correctWordDiv.value=''
 })
 
-nextBtn.addEventListener('click',()=>{
+nextBtn?.addEventListener('click',()=>{
   scrumbleWord=randomSrumbleWord();
   clearInterval(clear);
   checkTime();
@@ -183,6 +177,6 @@ function gameOver(lifeTracker:number){
   return;
 }
 
-resetBtn.addEventListener('click',()=>{
+resetBtn?.addEventListener('click',()=>{
   window.location.reload();
 })
