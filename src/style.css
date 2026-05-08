@@ -93,3 +93,33 @@ h1{
   width: 90px;
   padding: 5px 30px;
 }
+
+.game-leader-board{
+  display: flex;
+  justify-content: space-between;
+}
+
+.hint{
+  margin-top: 45px;
+  height:40px;
+  width: 100px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+.reset{
+  margin-top: 10px;
+   width: 90px;
+  padding: 5px 30px;
+}
+
+.user-data{
+  margin-left: 20px;
+  height: 500px;
+  width: 160px;
+  border: 1px solid salmon;
+}

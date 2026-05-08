@@ -3,16 +3,17 @@ interface User{
   scrumbleWord:string,
   correctWord:string,
   difficulty:string,
+  hint?:string,
 }
 
 //fruitCategory
 const fruitData:User[]=[
-  { id: 1, scrumbleWord: "alepp", correctWord: "apple", difficulty: "easy" },
-  { id: 2, scrumbleWord: "orgean", correctWord: "orange", difficulty: "easy" },
-  { id: 3, scrumbleWord: "magon", correctWord: "mango", difficulty: "easy" },
-  { id: 11, scrumbleWord: "awtremelno", correctWord: "watermelon", difficulty: "medium" },
-  { id: 12, scrumbleWord: "bwerryrast", correctWord: "strawberry", difficulty: "medium" },
-  { id: 10, scrumbleWord: "nipoepal", correctWord: "pineapple", difficulty: "medium" },
+  { id: 1, scrumbleWord: "alepp", correctWord: "apple", difficulty: "easy", hint:'app__e'},
+  { id: 2, scrumbleWord: "orgean", correctWord: "orange", difficulty: "easy", hint:'or_n_g_'},
+  { id: 3, scrumbleWord: "magon", correctWord: "mango", difficulty: "easy", hint:'man_o'},
+  { id: 11, scrumbleWord: "awtremelno", correctWord: "watermelon", difficulty: "medium", hint:'water_____'},
+  { id: 12, scrumbleWord: "bwerryrast", correctWord: "strawberry", difficulty: "medium", hint:'straw____'},
+  { id: 10, scrumbleWord: "nipoepal", correctWord: "pineapple", difficulty: "medium", hint:'pine_____'},
   { id: 13, scrumbleWord: "kiiw", correctWord: "kiwi", difficulty: "hard" },
   { id: 4, scrumbleWord: "naanab", correctWord: "banana", difficulty: "hard" },
   { id: 5, scrumbleWord: "agrpes", correctWord: "grapes", difficulty: "hard" },
@@ -55,6 +56,11 @@ const timer=document.querySelector<HTMLElement>('.timer');
 const life=document.querySelector<HTMLElement>('.life');
 const level=document.querySelector<HTMLSelectElement>('.difficulty-level');
 const catogery=document.querySelector<HTMLSelectElement>('.catogery');
+const hint=document.querySelector<HTMLElement>('.hint');
+const resetBtn=document.querySelector<HTMLElement>('.reset');
+const dataToView=document.querySelector<HTMLElement>('.user-game-data');
+
+
 
 let diffWordArr:number[]=[];
 console.log(diffWordArr);
@@ -67,6 +73,7 @@ level.addEventListener('change',()=>{
   diffWordArr=[];
   scrumbleWord=randomSrumbleWord();
   console.log(diffcultLevel);
+  checkTime();
 })
 
 catogery.addEventListener('change',()=>{
@@ -74,14 +81,17 @@ catogery.addEventListener('change',()=>{
   if(catogery.value==='fruitData'){
     categoryOption=fruitData;
     scrumbleWord=randomSrumbleWord();
+    checkTime()
   }
   else if(catogery.value==='movieData'){
     categoryOption=movieData;
     scrumbleWord=randomSrumbleWord();
+    checkTime()
   }
   else{
     categoryOption=cricketerData;
     scrumbleWord=randomSrumbleWord();
+    checkTime()
   }
 })
 
@@ -104,6 +114,12 @@ function randomSrumbleWord(){
   const correctWord=categoryOption[index]["correctWord"];
   console.log('correctWord:',correctWord);
   diffWordArr.push(index);
+
+  hint.addEventListener('click',()=>{
+    console.log(categoryOption[index]);
+    hint.textContent=categoryOption[index]['hint']
+  })
+
   return correctWord;
 }
 
@@ -114,6 +130,11 @@ submitBtn.addEventListener('click',()=>{
   const guess=correctWordDiv.value;
   if(guess===scrumbleWord){
     scoreTracker++;
+
+    localStorage.setItem('userData',JSON.stringify(scoreTracker));
+    let data=JSON.parse(localStorage.getItem('userData'));
+    dataToView.textContent=data;
+    
     console.log(scoreTracker);
     score.textContent=String(scoreTracker);
     clearInterval(clear);
@@ -130,12 +151,19 @@ nextBtn.addEventListener('click',()=>{
 let clear:number;
 let lifeTracker=3;
 function checkTime(){
+    clearInterval(clear);
     let sec=10;
     submitBtn.disabled=false;
+    hint.textContent='hint'
+    hint.style.display='none'
+
 
     clear=setInterval(()=>{
       sec--;
       timer.innerHTML=`<strong>Total time:${sec}</strong>`;
+      if(sec<=5){
+        hint.style.display='flex'
+      }
       if(sec===0){
         submitBtn.disabled=true;
         lifeTracker--;
@@ -154,3 +182,7 @@ function gameOver(lifeTracker:number){
   }
   return;
 }
+
+resetBtn.addEventListener('click',()=>{
+  window.location.reload();
+})
