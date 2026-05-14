@@ -1,0 +1,9 @@
+export const scrambleWordDiv = document.querySelector<HTMLDivElement>('.word-appear')!;
+export const correctWordDiv = document.querySelector<HTMLInputElement>('.fill-word')!;
+export const score = document.querySelector<HTMLElement>('.score')!;
+export const timer = document.querySelector<HTMLElement>('.timer')!;
+export const life = document.querySelector<HTMLElement>('.life')!;
+export const level = document.querySelector<HTMLSelectElement>('.difficulty-level');
+export const catogery = document.querySelector<HTMLSelectElement>('.catogery');
+export const hint = document.querySelector<HTMLElement>('.hint')!;
+export const resetBtn = document.querySelector<HTMLElement>('.reset');

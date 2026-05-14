@@ -11,19 +11,17 @@
     <main>
       <section class="game-board">
         <div class="game-constraint">
-          <p class="timer">timer</p>
-          <p class="life">Total life:3</p>
+          <p class="timer">Total time:00</p>
+          <p class="life">Total life:❤️❤️❤️</p>
           <!-- <p class="difficulty-level">difficulty-level</p> -->
           <select name="" id="" class="difficulty-level">
-            <option value="">level</option>
-            <option value="easy">easy</option>
+            <option value="easy" selected>easy</option>
             <option value="medium">medium</option>
             <option value="hard">hard</option>
           </select>
 
           <select name="" id="" class="catogery">
-            <option value="">category</option>
-            <option value="fruitData">fruit</option>
+            <option value="fruitData" selected>fruit</option>
             <option value="movieData">movies</option>
             <option value="cricketerData">cricket</option>
           </select>
@@ -41,21 +39,25 @@
 
         <div class="scrumble">
           <div class="guess-word">
-            <input class="fill-word" type="text" placeholder="guess word">
-            <button class="getWord">ans</button>
+            <input class="fill-word" id="fill-word" type="text" placeholder="guess...">
+            <!-- <button class="getWord">ans</button> -->
           </div>
-          <div class="word-appear">ordw</div>
-        </div>
-          <button class="next-word">next</button>
+          <div>
+            <div class="word-appear">ordw</div>
+            <!-- <button class="next-word">next</button> -->
+          </div>
           <button class="reset">reset</button>
-      </section>
-      <section class="user-data">
-        <div class="user-game-data">
-
+   
         </div>
-    </section>
-      
+      </section>
+
     </main>
+    <section class="user-data">
+      <div class="best-score">
+        <p>Best score</p>
+        <p class="score">0</p>
+      </div>
+    </section>
     
   
 <script type="module" src="./src/main.ts"></script>

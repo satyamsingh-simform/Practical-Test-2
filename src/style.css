@@ -2,23 +2,18 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 body{
   height: 100vh;
   width:100vw;
   background-color: rgb(36, 36, 49);
-}
-
-main{
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  background-color: white;
-  padding: 30px;
-  margin:auto;
-  height: 70%;
-  width: 50%;
-  border-radius: 5px;
+  align-items: center;
+  position: relative;
 }
 
 h1{
@@ -28,20 +23,33 @@ h1{
   margin-bottom: 30px;
 }
 
+main{
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  padding: 30px;
+  /* height: 70%; */
+  width: 700px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #c5b8dd, #ccc0e5);
+}
+
 .game-board{
   display: flex;
   flex-direction: column;
-  /* gap: 200px; */
+  /* background-color: red; */
+  width: 100%;
 }
 
 .score-div{
-  margin-top: 50px;
-  width: 200px;
-  padding: 10px;
+  /* margin-top: 50px; */
+  /* width: 200px; */
+  padding: 10px 20px;
   margin-bottom: 100px;
-    border: 1px solid gray;
+  border: 1px solid gray;
   border-radius: 5px;
-
+  background: linear-gradient(135deg, #9f7aea, #805ad5);
+  color: white;
 }
 
 .game-constraint{
@@ -50,27 +58,64 @@ h1{
   justify-content: space-between;
 }
 .timer,.life{
-  width: 200px;
-  padding: 10px;
+  /* width: 200px; */
+  padding: 10px 30px;
   border: 1px solid gray;
   border-radius: 5px;
+  background: linear-gradient(135deg, #9f7aea, #805ad5);
+  color: white;
 }
 .difficulty-level,.catogery{
   padding: 10px;
-  width: 110px;
+  /* width: 110px; */
+  background: linear-gradient(135deg, #9f7aea, #805ad5);
+  color: wheat;
+  border: none;
+  outline: none;
+
+  border-radius: 5px;
 }
+
 .scrumble{
+  width: 100%;
+  /* background-color: red; */
   display: flex;
   flex-direction: column;
   gap: 10px;
+  align-items: center;
 }
 .guess-word,.word-appear{
-  width: 630px;
+  width: 80px;
   padding: 10px;
   border: 1px solid gray;
   border-radius: 5px;
   font-size: 20px;
-  
+  display: flex;
+  justify-content: center;
+}
+.word-appear{
+  width: auto;
+  padding-left:25px;
+  letter-spacing: 20px;
+  text-align: center;
+  font-size: 2rem;
+  border: none;
+  background:linear-gradient(135deg,#f6d365,#fda085);
+  color: white;
+  font-weight: 700;
+  outline: none;
+}
+#fill-word{
+  width: 300px;
+  text-align: center;
+  border: 2px solid #f6d365;
+  background:linear-gradient(135deg,#f6d365,#fda085);
+  color: white;
+  font-weight: 700;
+  outline: none;
+}
+#fill-word:focus{
+  border: 2px solid #9f7aea;
 }
 .guess-word{
   border: none;
@@ -79,10 +124,11 @@ h1{
 }
 
 .fill-word{
-  width: 630px;
   padding: 10px;
   border-radius: 5px;
   font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 10px;
 }
 
 .getWord{
@@ -97,29 +143,52 @@ h1{
 .game-leader-board{
   display: flex;
   justify-content: space-between;
+  margin-top: 20px;
 }
 
 .hint{
-  margin-top: 45px;
+  /* margin-top: 45px; */
   height:40px;
-  width: 100px;
+  padding: 10px 20px;
   border: 1px solid gray;
   border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
   display: none;
+  background: linear-gradient(135deg, #9f7aea, #805ad5);
+  color: white;
 }
 
 .reset{
-  margin-top: 10px;
-   width: 90px;
-  padding: 5px 30px;
+  margin-top: 150px;
+  width: 90px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  color: white;
+  background: linear-gradient(135deg, #9f7aea, #805ad5);
 }
 
 .user-data{
-  margin-left: 20px;
-  height: 500px;
-  width: 160px;
-  border: 1px solid salmon;
+  width: 170px;
+  position: absolute;
+  right: 20%;
+  top: 25%;
+  background: linear-gradient(135deg, #c5b8dd, #ccc0e5);
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.best-score{
+  padding: 10px 20px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #9f7aea, #805ad5);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
