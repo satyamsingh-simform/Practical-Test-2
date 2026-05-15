@@ -1,10 +1,12 @@
 import { gameData } from "../core/gameState";
 import { hint, timer } from "../ui/dom";
 import { decreaseLife } from "./decreaselife";
+import { nextWord } from "./nextWord";
 
 export function checkTime(){
     clearInterval(gameData.clear);
     // let sec=11;
+    gameData.sec=11;
     // submitBtn.disabled=false;
     hint.textContent='hint'
     hint.style.display='none'
@@ -18,7 +20,13 @@ export function checkTime(){
       }
       if(gameData.sec===0){
         // submitBtn.disabled=true;
-        decreaseLife()
+        setTimeout(()=>{
+          alert('time over')
+        },500)
+        if(decreaseLife()){
+          return true;
+        };
+        nextWord();
         // lifeTracker--;
         // gameOver(lifeTracker);
         // life.innerHTML=`<strong>Total life:${'❤️'.repeat(lifeTracker)}</strong>`

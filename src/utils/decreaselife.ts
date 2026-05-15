@@ -4,7 +4,9 @@ import { life } from "../ui/dom";
 
 export function decreaseLife(){
   gameData.lifeTracker--;
-  gameOver(gameData.lifeTracker);
   life.innerHTML=`<strong>Total life:${'❤️'.repeat(gameData.lifeTracker)}</strong>`
   clearInterval(gameData.clear);
+  if(gameOver(gameData.lifeTracker)){
+    return true;
+  };
 }

@@ -4,5 +4,5 @@ export function increaseLevelMedium(){
   gameData.diffcultLevel='medium'
 }
 export function increaseLevelHard(){
-  gameData.diffcultLevel='medium'
+  gameData.diffcultLevel='hard'
 }

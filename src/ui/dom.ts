@@ -7,3 +7,4 @@ export const level = document.querySelector<HTMLSelectElement>('.difficulty-leve
 export const catogery = document.querySelector<HTMLSelectElement>('.catogery');
 export const hint = document.querySelector<HTMLElement>('.hint')!;
 export const resetBtn = document.querySelector<HTMLElement>('.reset');
+export const bestScore=document.querySelector<HTMLParagraphElement>('.best-score-p')

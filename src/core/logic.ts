@@ -1,6 +1,8 @@
 import { correctWordDiv, hint, resetBtn, score, scrambleWordDiv } from "../ui/dom";
+import { setScoreToLocalStorage } from "../utils/bestScore";
 import { decreaseLife } from "../utils/decreaselife";
 import { increaseLevelHard, increaseLevelMedium } from "../utils/graduallyLevel";
+import { nextWord } from "../utils/nextWord";
 import { gameData } from "./gameState";
 
 export function randomSrumbleWord(){
@@ -42,10 +44,13 @@ export function randomSrumbleWord(){
 
 export function submit(){
   const guess=correctWordDiv.value.toUpperCase();
+  console.log('guess:',guess);
+  console.log('scrumble:',gameData.scrumbleWord.toUpperCase());
+  
   if(guess===gameData.scrumbleWord.toUpperCase()){
     alert('correct guess')
     gameData.scoreTracker++;
-    
+    setScoreToLocalStorage();
     score.textContent=String(gameData.scoreTracker);
     if(gameData.scoreTracker>=3){
       increaseLevelMedium()
@@ -54,10 +59,13 @@ export function submit(){
       increaseLevelHard()
     }
     clearInterval(gameData.clear);
+    nextWord();
   }
   else{
     alert('oops wrong guess');
-    decreaseLife();
+    if(!decreaseLife()){
+      nextWord();
+    };
   }
   correctWordDiv.value=''
 }
@@ -65,8 +73,9 @@ export function submit(){
 
 export function gameOver(lifeTracker:number){
   if(lifeTracker===0){
-    alert('game over as our life is 0')
-    window.location.reload();
+    alert('game over as our life is 0, restart to play');
+    scrambleWordDiv.textContent='GAME OVER';
+    return true;
   }
   return;
 }

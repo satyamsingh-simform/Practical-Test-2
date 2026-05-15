@@ -1,4 +1,14 @@
+import { randomSrumbleWord } from "./core/logic";
+import './core/keyEvent'
+import './utils/category'
+import './utils/level'
+import { gameData } from "./core/gameState";
+import { getScoreLocalStorage } from "./utils/bestScore";
 
+document.addEventListener('DOMContentLoaded',()=>{
+    gameData.scrumbleWord=randomSrumbleWord();
+    getScoreLocalStorage();
+})
 
 
 

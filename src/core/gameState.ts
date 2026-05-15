@@ -1,5 +1,5 @@
+import type { Gdata } from "../model.ts/dataModel";
 import { fruitData } from "./constant";
-import { randomSrumbleWord } from "./logic";
 
 // let diffWordArr:number[]=[];
 // let diffcultLevel='easy';
@@ -9,11 +9,12 @@ import { randomSrumbleWord } from "./logic";
 // let clear:number;
 // let lifeTracker=3;
 
-export const gameData={
+
+export const gameData:Gdata={
     diffWordArr:[],
     diffcultLevel:'easy',
     categoryOption:fruitData,
-    scrumbleWord:randomSrumbleWord(),
+    scrumbleWord:'',
     scoreTracker:0,
     clear:0,
     lifeTracker:3,

@@ -7,12 +7,21 @@ export const fruitData: Data[] = [
   { id: 3, scrumbleWord: "magon", correctWord: "mango", difficulty: "easy", hint: "m__n__" },
   { id: 14, scrumbleWord: "papaay", correctWord: "papaya", difficulty: "easy", hint: "papa__" },
   { id: 11, scrumbleWord: "awtremelno", correctWord: "watermelon", difficulty: "medium", hint: "w__e__m__l__n" },
-  { id: 12, scrumbleWord: "bwerryrast", correctWord: "strawberry", difficulty: "medium", hint: "s__r__w__r__" },
-  { id: 10, scrumbleWord: "nipoepal", correctWord: "pineapple", difficulty: "medium", hint: "p__n__a__p__e" },
+  { id: 12, scrumbleWord: "bwerryrast", correctWord: "strawberry", difficulty: "hard", hint: "s__r__w__r__" },
+  { id: 10, scrumbleWord: "nipaepal", correctWord: "pineapple", difficulty: "medium", hint: "p__n__a__p__e" },
   { id: 13, scrumbleWord: "kiiw", correctWord: "kiwi", difficulty: "hard", hint: "k__i" },
   { id: 4, scrumbleWord: "naanab", correctWord: "banana", difficulty: "hard", hint: "b__n__n__" },
   { id: 5, scrumbleWord: "agrpes", correctWord: "grapes", difficulty: "hard", hint: "g__a__e__" },
   { id: 6, scrumbleWord: "yrrebc", correctWord: "cherry", difficulty: "hard", hint: "c__e__r__" },
+  { id: 15, scrumbleWord: "graep", correctWord: "grape", difficulty: "easy", hint: "g__a__" },
+  { id: 16, scrumbleWord: "olnem", correctWord: "melon", difficulty: "easy", hint: "m__l__n" },
+  { id: 17, scrumbleWord: "mlup", correctWord: "plum", difficulty: "easy", hint: "p__u__" },
+  { id: 18, scrumbleWord: "toconcu", correctWord: "coconut", difficulty: "medium", hint: "c__c__n__t" },
+  { id: 19, scrumbleWord: "kblacberyr", correctWord: "blackberry", difficulty: "medium", hint: "b__a__k__e__r__" },
+  { id: 20, scrumbleWord: "troapic", correctWord: "apricot", difficulty: "medium", hint: "a__r__c__t" },
+  { id: 21, scrumbleWord: "tanepomrgaee", correctWord: "pomegranate", difficulty: "hard", hint: "p__m__g__a__a__e" },
+  { id: 22, scrumbleWord: "krtfucjai", correctWord: "jackfruit", difficulty: "hard", hint: "j__c__f__u__t" },
+  { id: 23, scrumbleWord: "cenrtaine", correctWord: "nectarine", difficulty: "hard", hint: "n__c__a__i__e" },
 ];
 //movieCategory
 export const movieData: Data[] = [
