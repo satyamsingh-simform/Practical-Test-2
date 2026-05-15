@@ -3,14 +3,16 @@ import { bestScore } from "../ui/dom";
 
 export function setScoreToLocalStorage(){
     let score=getScoreLocalStorage();
-    if(score<gameData.scoreTracker){
+    if(Number(score)<gameData.scoreTracker){
         localStorage.setItem('bestScore',JSON.stringify(gameData.scoreTracker));
         getScoreLocalStorage();
     }
 }
 
 export function getScoreLocalStorage(){
-    let score=JSON.parse(localStorage.getItem('bestScore'));
+    let score:string=JSON.parse(localStorage.getItem('bestScore')!);
+    if(!score) return;
+    if(!bestScore) return;
     bestScore.textContent=score;
     return score;
 }

@@ -8,7 +8,7 @@ level?.addEventListener('change',()=>{
     alert('no life left to play');
     return
   }
-  gameData.diffcultLevel=level.value;
+  gameData.diffcultLevel=level?.value;
   gameData.diffWordArr=[];
   gameData.scrumbleWord=randomSrumbleWord();
   console.log(gameData.diffcultLevel);

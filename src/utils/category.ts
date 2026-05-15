@@ -15,7 +15,7 @@ catogery?.addEventListener('change',()=>{
     gameData.scrumbleWord=randomSrumbleWord();
     checkTime()
   }
-  else if(catogery.value==='movieData'){
+  else if(catogery?.value==='movieData'){
     gameData.categoryOption=movieData;
     gameData.scrumbleWord=randomSrumbleWord();
     checkTime()
